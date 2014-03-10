@@ -1,0 +1,12 @@
+galaxy_info:
+  author: AR
+  description: common setup routine for ubuntu 12.04 (a.k.a precise)
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - precise
+  categories:
+  - system
+dependencies: []

@@ -1,0 +1,11 @@
+# binary packages
+deb {{ common_apt_mirror }}/debian wheezy main contrib non-free
+deb {{ common_apt_mirror }}/debian wheezy-backports main contrib non-free
+deb {{ common_apt_mirror }}/debian wheezy-proposed-updates main contrib non-free
+deb {{ common_apt_mirror }}/debian wheezy-updates main contrib non-free
+
+# sources
+deb-src {{ common_apt_mirror }}/debian wheezy main contrib non-free
+deb-src {{ common_apt_mirror }}/debian wheezy-backports main contrib non-free
+deb-src {{ common_apt_mirror }}/debian wheezy-proposed-updates main contrib non-free
+deb-src {{ common_apt_mirror }}/debian wheezy-updates main contrib non-free

@@ -3,11 +3,12 @@
   template: src=locale
             dest=/etc/default/locale
 
+- name: template /etc/timezone
+  template: src=timezone
+            dest=/etc/timezone
+
 - name: set timezone
-  file: src=/usr/share/zoneinfo/{{ common_timezone }}
-        dest=/etc/localtime
-        force=yes
-        state=link
+  shell: DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive dpkg-reconfigure tzdata
 
 - name: update source.list
   template: src=sources.list
@@ -16,12 +17,24 @@
 - name: update apt cache
   apt: update_cache=yes
 
+# perhaps write a check for heartbleed buggy versions?
+- apt: pkg=openssl state=latest
+
 - name: install common packages
   apt: pkg={{ item }}
        state=present
   with_items:
+    - locales
     - build-essential
     - git
     - htop
     - sysstat
     - vim
+    - python-dev
+    - tmux
+
+- name: ensure human user account exists
+  user: name=human shell=/bin/bash state=present
+
+- authorized_key: user=human key='{{ lookup('file', human_ssh_pub_key) }}'
+

@@ -1,12 +1,12 @@
 galaxy_info:
-  author: AR
-  description: common setup routine for ubuntu 12.04 (a.k.a precise)
+  author: AR + David Stainton
+  description: common setup for debian based systems
   license: MIT
   min_ansible_version: 1.2
   platforms:
-  - name: Ubuntu
+  - name: Debian
     versions:
-    - precise
+    - wheezy
   categories:
   - system
 dependencies: []
